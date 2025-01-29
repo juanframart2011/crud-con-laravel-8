@@ -14,10 +14,6 @@
 
         <a href="{{ route( 'client.index' ) }}" class="btn btn-secondary">Lista Clientes</a>
 
-        @if( Session::has( 'mensaje' ) )
-            <div class="alert alert-info my-5">{{ Session::get( 'mensaje' ) }}</div>
-        @endif
-
         @if( isset( $client ) )
 
             <form action="{{ route( 'client.update', $client ) }}" method="post">
