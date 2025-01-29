@@ -6,6 +6,10 @@
         <h1>Crear de Cliente</h1>
         <a href="{{ route( 'client.index' ) }}" class="btn btn-secondary">Lista Clientes</a>
 
+        @if( Session::has( 'mensaje' ) )
+            <div class="alert alert-info my-5">{{ Session::get( 'mensaje' ) }}</div>
+        @endif
+
         <form action="{{ route( 'client.store' ) }}" method="post">
             @csrf
 

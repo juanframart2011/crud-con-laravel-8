@@ -13,8 +13,23 @@
                 <th>Acciones</th>
             </thead>
             <tbody>
-                
+                @forelse( $clients as $client )
+                    <tr>
+                        <td>{{ $client->name }}</td>
+                        <td>{{ $client->due }}</td>
+                        <td>{{ $client->name }}</td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="3">No hay registros</td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
+
+        @if( $clients->count() )
+
+            {{ $clients->links() }}
+        @endif
     </div>
 @endsection

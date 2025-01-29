@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class ClientController extends Controller
 {
@@ -14,7 +15,8 @@ class ClientController extends Controller
      */
     public function index()
     {
-        return view( 'client.index' );
+        $clients = Client::paginate(5);
+        return view( 'client.index' )->with( 'clients', $clients );
     }
 
     /**
@@ -41,7 +43,11 @@ class ClientController extends Controller
             'comments' => 'required|max:15'
         ]);
 
-        $client = Client::create($request->all());
+        $client = Client::create($request->only('name','due','comments'));
+
+        Session()->flash('mensaje','registro creado con éxito');
+
+        return redirect()->route('client.index');
     }
 
     /**
