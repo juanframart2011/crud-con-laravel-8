@@ -17,7 +17,9 @@
                     <tr>
                         <td>{{ $client->name }}</td>
                         <td>{{ $client->due }}</td>
-                        <td>{{ $client->name }}</td>
+                        <td>
+                            <a class="btn btn-warning" href="{{ route( 'client.edit', $client->id ) }}">Editar</a>
+                        </td>
                     </tr>
                 @empty
                     <tr>
